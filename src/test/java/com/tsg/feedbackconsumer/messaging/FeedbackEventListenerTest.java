@@ -1,19 +1,4 @@
-/*
- * This class is used to test the FeedbackEventListener class.
- * It contains tests for the handleFeedbackSubmitted method.
- * It also contains tests for the round trip through the configured ObjectMapper.
- * @author Devin Joshua
- * @version 1.0
- * @since 2025-11-11
- * .\mvnw clean verify runs full maven lifecycle: cleaning build, compiling and running unit tests.
- * .\mvnw clean test runs only the unit tests.
- * .\mvnw clean verify -Dtest=FeedbackEventListenerTest runs only the tests in this class.
- * .\mvnw clean verify -Dtest=FeedbackEventListenerTest#handleFeedbackSubmitted_logsInfo_forValidPayload runs only the test in this class.
- * .\mvnw clean verify -Dtest=FeedbackEventListenerTest#handleFeedbackSubmitted_logsWarning_whenCommentTooLong runs only the test in this class.
- * .\mvnw clean verify -Dtest=FeedbackEventListenerTest#feedbackSubmittedEvent_roundTripsThroughConfiguredObjectMapper runs only the test in this class.
- * .\mvnw clean verify -Dtest=FeedbackEventListenerTest#handleFeedbackSubmitted_logsInfo_forValidPayload -Dtest=FeedbackEventListenerTest#handleFeedbackSubmitted_logsWarning_whenCommentTooLong -Dtest=FeedbackEventListenerTest#feedbackSubmittedEvent_roundTripsThroughConfiguredObjectMapper runs all the tests in this class.
- * .\mvnw clean verify -Dtest=FeedbackEventListenerTest#handleFeedbackSubmitted_logsInfo_forValidPayload -Dtest=FeedbackEventListenerTest#handleFeedbackSubmitted_logsWarning_whenCommentTooLong -Dtest=FeedbackEventListenerTest#feedbackSubmittedEvent_roundTripsThroughConfiguredObjectMapper -Dtest=FeedbackEventListenerTest#handleFeedbackSubmitted_logsInfo_forValidPayload -Dtest=FeedbackEventListenerTest#handleFeedbackSubmitted_logsWarning_whenCommentTooLong -Dtest=FeedbackEventListenerTest#feedbackSubmittedEvent_roundTripsThroughConfiguredObjectMapper runs all the tests in this class.
- */
+// Run with .\mvnw clean verify (or add -Dtest=FeedbackEventListenerTest for focused execution).
 package com.tsg.feedbackconsumer.messaging;
 
 import java.time.Instant;

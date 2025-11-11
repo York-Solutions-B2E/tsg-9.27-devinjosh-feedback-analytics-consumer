@@ -72,3 +72,6 @@ management:
 - Verify build tool selection (Gradle vs. Maven) before generating project scaffold.
 
 
+### Test Run Log
+- 2025-11-11 — Windows PowerShell, Java 21 — `.\mvnw clean verify` (passes; includes `FeedbackEventListenerTest` logging assertions and Jackson round-trip mapping).
+

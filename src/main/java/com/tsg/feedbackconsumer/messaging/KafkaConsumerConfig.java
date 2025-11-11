@@ -15,12 +15,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.ContainerProperties;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.Map;
 
 @Configuration
 public class KafkaConsumerConfig {
+
+    private static final String DEFAULT_GROUP_ID = "feedback-analytics-consumer";
 
     @Bean
     public ConsumerFactory<String, FeedbackSubmittedEvent> consumerFactory(KafkaProperties kafkaProperties) {
@@ -45,12 +48,18 @@ public class KafkaConsumerConfig {
 
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, FeedbackSubmittedEvent> kafkaListenerContainerFactory(
-            ConsumerFactory<String, FeedbackSubmittedEvent> consumerFactory
-    ) {
+            ConsumerFactory<String, FeedbackSubmittedEvent> consumerFactory,
+            KafkaProperties kafkaProperties) {
         ConcurrentKafkaListenerContainerFactory<String, FeedbackSubmittedEvent> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
-        factory.getContainerProperties().setAckMode(org.springframework.kafka.listener.ContainerProperties.AckMode.RECORD);
+        ContainerProperties containerProperties = factory.getContainerProperties();
+        containerProperties.setAckMode(ContainerProperties.AckMode.RECORD);
+        String groupId = kafkaProperties.getConsumer().getGroupId();
+        if (groupId == null || groupId.isBlank()) {
+            groupId = DEFAULT_GROUP_ID;
+        }
+        containerProperties.setGroupId(groupId);
         return factory;
     }
 }
