@@ -24,4 +24,3 @@ management:
 logging:
   level:
     com.tsg.feedbackconsumer: INFO
-
